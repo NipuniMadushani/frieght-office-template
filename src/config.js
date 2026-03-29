@@ -48,7 +48,8 @@ export const DEFAULT_THEME_MODE = ThemeMode.SYSTEM;
 const config = {
   menuOrientation: MenuOrientation.VERTICAL,
   miniDrawer: false,
-  fontFamily: `'Roboto', sans-serif`,
+  fontFamily: `'Poppins', sans-serif`,
+  //  fontFamily: `'Roboto', sans-serif`,
   borderRadius: 8,
   outlinedFilled: true,
   presetColor: 'default',

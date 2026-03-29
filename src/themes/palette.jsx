@@ -101,6 +101,13 @@ export function buildPalette(presetColor) {
     background: {
       paper: colors.paper,
       default: colors.paper
+    },
+    formAction: {
+      cancelBg: '#424242',
+      cancelHover: '#212121',
+      saveBg: '#003577',
+      saveColor: '#ffffff',
+      saveHover: '#00224d'
     }
   };
 
@@ -167,6 +174,13 @@ export function buildPalette(presetColor) {
     background: {
       paper: colors.darkLevel2,
       default: colors.darkPaper
+    },
+    formAction: {
+      cancelBg: '#2c2c2c',
+      cancelHover: '#1a1a1a',
+      saveBg: '#003577',
+      saveColor: '#ffffff',
+      saveHover: '#00224d'
     }
   };
 

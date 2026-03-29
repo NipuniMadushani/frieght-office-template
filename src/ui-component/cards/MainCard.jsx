@@ -49,9 +49,34 @@ export default function MainCard({
       })}
     >
       {/* card header and action */}
-      {!darkTitle && title && <CardHeader sx={{ ...headerStyle, ...headerSX }} title={title} action={secondary} />}
+      {!darkTitle && title && (
+        <CardHeader
+          sx={{
+            ...headerStyle,
+            bgcolor: colorScheme !== ThemeMode.DARK ? '#003577' : 'inherit',
+            color: colorScheme !== ThemeMode.DARK ? '#ffffff' : 'inherit',
+            ...headerSX
+          }}
+          titleTypographyProps={{ sx: { color: colorScheme !== ThemeMode.DARK ? '#ffffff' : 'inherit' } }}
+          title={title}
+          action={secondary}
+        />
+      )}
       {darkTitle && title && (
-        <CardHeader sx={{ ...headerStyle, ...headerSX }} title={<Typography variant="h3">{title}</Typography>} action={secondary} />
+        <CardHeader
+          sx={{
+            ...headerStyle,
+            bgcolor: colorScheme !== ThemeMode.DARK ? '#003577' : 'inherit',
+            color: colorScheme !== ThemeMode.DARK ? '#ffffff' : 'inherit',
+            ...headerSX
+          }}
+          title={
+            <Typography variant="h3" sx={{ color: colorScheme !== ThemeMode.DARK ? '#ffffff' : 'inherit' }}>
+              {title}
+            </Typography>
+          }
+          action={secondary}
+        />
       )}
 
       {/* content & header divider */}

@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import { QueryClient, QueryClientProvider, MutationCache } from '@tanstack/react-query';
 
 // third party
 import { Provider } from 'react-redux';
@@ -7,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 // project imports
 import App from 'App';
 import { store, persister } from 'store';
+import { openSnackbar } from 'store/slices/snackbar';
 import * as serviceWorker from 'serviceWorker';
 import reportWebVitals from 'reportWebVitals';
 import { ConfigProvider } from 'contexts/ConfigContext';
@@ -45,11 +47,53 @@ import '@fontsource/poppins/700.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+// 🔥 Global Form Submission Handler 🔥
+// This catches EVERY mutation across the entire app and auto-fires the Snackbar!
+const queryClient = new QueryClient({
+  mutationCache: new MutationCache({
+    onSuccess: (data, variables, context, mutation) => {
+      // You can skip global alert by passing { meta: { showSnackbar: false } } in useMutation
+      if (mutation.meta?.showSnackbar !== false) {
+        store.dispatch(
+          openSnackbar({
+            open: true,
+            message: mutation.meta?.successMessage || 'Data saved successfully.',
+            variant: 'alert',
+            alert: { variant: 'filled' },
+            severity: 'success',
+            anchorOrigin: { vertical: 'top', horizontal: 'right' },
+            transition: 'SlideLeft',
+            close: true
+          })
+        );
+      }
+    },
+    onError: (error, variables, context, mutation) => {
+      store.dispatch(
+        openSnackbar({
+          open: true,
+          // Pull exact error from Spring Boot, fallback to custom dev meta, fallback to exact generic UI string
+          message: error?.response?.data?.message || mutation.meta?.errorMessage || 'Failed to save data. Please try again.',
+          variant: 'alert',
+          alert: { variant: 'filled' },
+          severity: 'error',
+          anchorOrigin: { vertical: 'top', horizontal: 'right' },
+          transition: 'SlideLeft',
+          close: true
+        })
+      );
+    }
+  })
+});
+
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persister}>
       <ConfigProvider>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </ConfigProvider>
     </PersistGate>
   </Provider>

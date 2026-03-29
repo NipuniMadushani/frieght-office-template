@@ -47,7 +47,7 @@ function a11yProps(index) {
 // tabs option
 const tabsOption = [
   {
-    label: 'User Profile',
+    label: 'Personal Information',
     icon: <PersonOutlineTwoToneIcon />,
     caption: 'Profile Settings'
   },
