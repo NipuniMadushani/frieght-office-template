@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -24,17 +25,31 @@ import FileCopyTwoToneIcon from '@mui/icons-material/FileCopyOutlined';
 import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ArchiveTwoToneIcon from '@mui/icons-material/ArchiveOutlined';
 
-export default function EarningCard({ isLoading }) {
+export default function EarningCard({ 
+  isLoading, 
+  title = 'Total Earning', 
+  value = '$500.00', 
+  icon = EarningIcon, 
+  path 
+}) {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
+    event.stopPropagation(); // Prevent card navigation when opening menu
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCardClick = () => {
+    if (path) {
+      navigate(path);
+    }
   };
 
   return (
@@ -45,12 +60,14 @@ export default function EarningCard({ isLoading }) {
         <MainCard
           border={false}
           content={false}
+          onClick={handleCardClick}
           sx={{
             bgcolor: 'secondary.dark',
             ...theme.applyStyles('dark', { bgcolor: 'dark.dark' }),
             color: '#fff',
             overflow: 'hidden',
             position: 'relative',
+            cursor: path ? 'pointer' : 'default',
             '&:after': {
               content: '""',
               position: 'absolute',
@@ -92,7 +109,11 @@ export default function EarningCard({ isLoading }) {
                   mt: 1
                 }}
               >
-                <CardMedia sx={{ width: 30, height: 30 }} component="img" src={EarningIcon} alt="Notification" />
+                {typeof icon === 'string' ? (
+                   <CardMedia sx={{ width: 30, height: 30 }} component="img" src={icon} alt={title} />
+                ) : (
+                   icon
+                )}
               </Avatar>
               <Avatar
                 variant="rounded"
@@ -141,7 +162,7 @@ export default function EarningCard({ isLoading }) {
               </MenuItem>
             </Menu>
             <Stack direction="row" sx={{ alignItems: 'center' }}>
-              <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>$500.00</Typography>
+              <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>{value}</Typography>
               <Avatar sx={{ ...theme.typography.smallAvatar, bgcolor: 'secondary.200', color: 'secondary.dark' }}>
                 <ArrowUpwardIcon fontSize="inherit" sx={{ transform: 'rotate3d(1, 1, 1, 45deg)' }} />
               </Avatar>
@@ -155,7 +176,7 @@ export default function EarningCard({ isLoading }) {
                 ...theme.applyStyles('dark', { color: 'text.secondary' })
               }}
             >
-              Total Earning
+              {title}
             </Typography>
           </Box>
         </MainCard>
@@ -164,4 +185,11 @@ export default function EarningCard({ isLoading }) {
   );
 }
 
-EarningCard.propTypes = { isLoading: PropTypes.bool };
+EarningCard.propTypes = { 
+  isLoading: PropTypes.bool,
+  title: PropTypes.string,
+  value: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  path: PropTypes.string
+};
+

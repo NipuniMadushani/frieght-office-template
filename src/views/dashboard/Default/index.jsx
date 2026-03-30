@@ -5,16 +5,18 @@ import Grid from '@mui/material/Grid';
 
 // project imports
 import EarningCard from './EarningCard';
-import PopularCard from './PopularCard';
-import TotalOrderLineChartCard from './TotalOrderLineChartCard';
-import TotalIncomeDarkCard from '../../../ui-component/cards/TotalIncomeDarkCard';
-import TotalIncomeLightCard from '../../../ui-component/cards/TotalIncomeLightCard';
-import TotalGrowthBarChart from './TotalGrowthBarChart';
-
 import { gridSpacing } from 'store/constant';
 
 // assets
-import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
@@ -25,45 +27,77 @@ export default function Dashboard() {
     setLoading(false);
   }, []);
 
+  const dashboardTiles = [
+    {
+      title: 'Total Customers',
+      value: '2,450',
+      icon: <PeopleAltOutlinedIcon />,
+      path: '/apps/user/account-profile/all-customers'
+    },
+    {
+      title: 'Total Orders',
+      value: '1,203',
+      icon: <ShoppingCartOutlinedIcon />,
+      path: '/apps/customer/order-list'
+    },
+    {
+      title: 'Total Invoices',
+      value: '840',
+      icon: <ReceiptOutlinedIcon />,
+      path: '/apps/invoice/invoice-list'
+    },
+    {
+      title: 'Messages',
+      value: '14 New',
+      icon: <ChatOutlinedIcon />,
+      path: '/apps/chat'
+    },
+    {
+      title: 'Emails',
+      value: '5 Unread',
+      icon: <EmailOutlinedIcon />,
+      path: '/apps/mail'
+    },
+    {
+      title: 'Calendar',
+      value: '3 Events',
+      icon: <CalendarTodayOutlinedIcon />,
+      path: '/apps/calendar'
+    },
+    {
+      title: 'Form Reports',
+      value: '128 total',
+      icon: <DescriptionOutlinedIcon />,
+      path: '/forms/layouts/layouts'
+    },
+    {
+      title: 'Analytics',
+      value: 'View Stats',
+      icon: <EqualizerOutlinedIcon />,
+      path: '/dashboard/analytics'
+    },
+    {
+      title: 'System Settings',
+      value: 'Active',
+      icon: <SettingsOutlinedIcon />,
+      path: '/sample-page'
+    }
+  ];
+
   return (
     <Grid container spacing={gridSpacing}>
-      <Grid size={12}>
-        <Grid container spacing={gridSpacing}>
-          <Grid size={{ lg: 4, md: 6, sm: 6, xs: 12 }}>
-            <EarningCard isLoading={isLoading} />
-          </Grid>
-          <Grid size={{ lg: 4, md: 6, sm: 6, xs: 12 }}>
-            <TotalOrderLineChartCard isLoading={isLoading} />
-          </Grid>
-          <Grid size={{ lg: 4, md: 12, sm: 12, xs: 12 }}>
-            <Grid container spacing={gridSpacing}>
-              <Grid size={{ sm: 6, xs: 12, md: 6, lg: 12 }}>
-                <TotalIncomeDarkCard isLoading={isLoading} />
-              </Grid>
-              <Grid size={{ sm: 6, xs: 12, md: 6, lg: 12 }}>
-                <TotalIncomeLightCard
-                  {...{
-                    isLoading: isLoading,
-                    total: 203,
-                    label: 'Total Income',
-                    icon: <StorefrontTwoToneIcon fontSize="inherit" />
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
+      {dashboardTiles.map((tile, index) => (
+        <Grid size={{ lg: 4, md: 6, sm: 6, xs: 12 }} key={index}>
+          <EarningCard
+            isLoading={isLoading}
+            title={tile.title}
+            value={tile.value}
+            icon={tile.icon}
+            path={tile.path}
+          />
         </Grid>
-      </Grid>
-      <Grid size={12}>
-        <Grid container spacing={gridSpacing}>
-          <Grid size={{ xs: 12, md: 8 }}>
-            <TotalGrowthBarChart isLoading={isLoading} />
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <PopularCard isLoading={isLoading} />
-          </Grid>
-        </Grid>
-      </Grid>
+      ))}
     </Grid>
   );
 }
+
