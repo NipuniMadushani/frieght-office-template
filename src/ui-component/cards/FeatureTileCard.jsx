@@ -26,8 +26,8 @@ const FeatureTileCard = ({ isLoading, title, subTitle, icon, path, color = 'prim
     }
   };
 
-  const bgColor = color === 'primary' ? '#003577' : theme.vars.palette.secondary.dark;
-  const hoverColor = color === 'primary' ? '#30b2eb' : theme.vars.palette.secondary.main;
+  const baseGradient = color === 'primary' ? 'linear-gradient(135deg, #003577 0%, #004eab 100%)' : 'linear-gradient(135deg, #4527a0 0%, #5e35b1 100%)';
+  const hoverGradient = color === 'primary' ? 'linear-gradient(135deg, #30b2eb 0%, #0096da 100%)' : 'linear-gradient(135deg, #673ab7 0%, #7e57c2 100%)';
 
   return (
     <>
@@ -45,7 +45,7 @@ const FeatureTileCard = ({ isLoading, title, subTitle, icon, path, color = 'prim
             content={false}
             onClick={handleCardClick}
             sx={{
-              bgcolor: bgColor,
+              background: baseGradient,
               color: '#fff',
               overflow: 'hidden',
               position: 'relative',
@@ -55,10 +55,11 @@ const FeatureTileCard = ({ isLoading, title, subTitle, icon, path, color = 'prim
               flexDirection: 'column',
               justifyContent: 'center',
               boxShadow: theme.shadows[3],
-              transition: 'background-color 0.3s ease',
+              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
               '&:hover': {
-                bgcolor: hoverColor,
-                boxShadow: theme.shadows[10]
+                background: hoverGradient,
+                boxShadow: theme.shadows[10],
+                transform: 'translateY(-2px)'
               }
             }}
           >
