@@ -121,7 +121,11 @@ export default function Snackbar() {
               '.MuiAlert-action': { mb: 0.5 },
               ...(alert.variant === 'outlined' && {
                 bgcolor: 'background.paper'
-              })
+              }),
+              ...(alert.color && {
+                bgcolor: alert.color
+              }),
+              ...alert.sx
             }}
           >
             {message}

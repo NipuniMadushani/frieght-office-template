@@ -43,19 +43,20 @@ export let DropzopType;
 })(DropzopType || (DropzopType = {}));
 
 export const APP_AUTH = AuthProvider.JWT;
-export const DEFAULT_THEME_MODE = ThemeMode.SYSTEM;
+// export const DEFAULT_THEME_MODE = ThemeMode.SYSTEM;
+export const DEFAULT_THEME_MODE = ThemeMode.LIGHT;
 
 const config = {
-  menuOrientation: MenuOrientation.VERTICAL,
+  menuOrientation: MenuOrientation.HORIZONTAL,
   miniDrawer: false,
   fontFamily: `'Poppins', sans-serif`,
   //  fontFamily: `'Roboto', sans-serif`,
   borderRadius: 8,
   outlinedFilled: true,
-  presetColor: 'default',
+  presetColor: 'theme6',
   i18n: 'en',
   themeDirection: ThemeDirection.LTR,
-  container: true
+  container: false
 };
 
 export default config;

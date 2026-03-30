@@ -36,7 +36,7 @@ const snackbar = createSlice({
       state.message = message || initialState.message;
       state.anchorOrigin = anchorOrigin || initialState.anchorOrigin;
       state.variant = variant || initialState.variant;
-      state.alert = { variant: alert?.variant || initialState.alert.variant };
+      state.alert = { ...initialState.alert, ...alert };
       state.severity = severity || initialState.severity;
       state.transition = transition || initialState.transition;
       state.close = close === false ? close : initialState.close;

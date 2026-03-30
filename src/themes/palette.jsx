@@ -103,11 +103,23 @@ export function buildPalette(presetColor) {
       default: colors.paper
     },
     formAction: {
-      cancelBg: '#424242',
-      cancelHover: '#212121',
-      saveBg: '#003577',
+      cancelBg: colors.grey500,
+      cancelHover: colors.grey600,
+      saveBg: colors.primaryMain,
       saveColor: '#ffffff',
-      saveHover: '#00224d'
+      saveHover: colors.primaryDark
+    },
+    warningDialog: {
+      headerBg: '#c6ad1eff',
+      headerText: '#111111',
+      bodyBg: '#f4dd52',
+      bodyText: '#111111',
+      confirmBg: '#8ac425',
+      confirmHover: '#77a920',
+      confirmText: '#ffffff',
+      cancelBg: '#f24d4e',
+      cancelHover: '#d94142',
+      cancelText: '#ffffff'
     }
   };
 
@@ -176,11 +188,23 @@ export function buildPalette(presetColor) {
       default: colors.darkPaper
     },
     formAction: {
-      cancelBg: '#2c2c2c',
-      cancelHover: '#1a1a1a',
-      saveBg: '#003577',
+      cancelBg: colors.grey600,
+      cancelHover: colors.grey700,
+      saveBg: colors.primaryMain,
       saveColor: '#ffffff',
-      saveHover: '#00224d'
+      saveHover: colors.primaryDark
+    },
+    warningDialog: {
+      headerBg: '#c6ad1eff', // Retaining the explicit brand colors for dark mode context too
+      headerText: '#111111',
+      bodyBg: '#edda6dff',
+      bodyText: '#111111',
+      confirmBg: '#8ac425',
+      confirmHover: '#77a920',
+      confirmText: '#ffffff',
+      cancelBg: '#f24d4e',
+      cancelHover: '#d94142',
+      cancelText: '#ffffff'
     }
   };
 

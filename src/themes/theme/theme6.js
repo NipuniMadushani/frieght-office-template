@@ -7,14 +7,14 @@ const theme6 = {
   // primary
   primaryLight: '#e8eaf6',
   primary200: '#9fa8da',
-  primaryMain: '#3f51b5',
+  primaryMain: '#003577',
   primaryDark: '#3949ab',
   primary800: '#283593',
 
   // secondary
   secondaryLight: '#e8eaf6',
   secondary200: '#9fa8da',
-  secondaryMain: '#3f51b5',
+  secondaryMain: '#003577',
   secondaryDark: '#3949ab',
   secondary800: '#283593',
 

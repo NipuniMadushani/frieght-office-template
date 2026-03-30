@@ -17,7 +17,35 @@ export const useGetProfileQuery = () => {
       // By using a full absolute URL, Axios safely ignores its default mock baseURL
       const response = await axiosServices.get(`${USER_SERVICE_URL}/api/v1/user/profile`);
       return response.data;
-    }
+    },
+    // BEST PRACTICE: Smart Retry Logic
+    retry: (failureCount, error) => {
+      // Don't retry more than 3 times
+      if (failureCount >= 3) return false;
+      // Immediately fail and do not retry if error is a 4xx Client Error (401, 403, 404, etc.)
+      // if (error?.response?.status >= 400 && error?.response?.status < 500) return false;
+      // For all other errors (like 500 Server Error or generic network drops), KEEP retrying!
+      return true;
+    },
+    refetchOnWindowFocus: false // Prevent spamming API when clicking back and forth between browser tabs
+  });
+};
+
+// Custom Hook to GET All User Profiles
+export const useGetAllProfilesQuery = () => {
+  return useQuery({
+    queryKey: ['AllUserProfiles'],
+    queryFn: async () => {
+      const response = await axiosServices.get(`${USER_SERVICE_URL}/api/v1/user/profile/all`);
+      return response.data;
+    },
+    // BEST PRACTICE: Smart Retry Logic
+    retry: (failureCount, error) => {
+      if (failureCount >= 3) return false;
+      if (error?.response?.status >= 400 && error?.response?.status < 500) return false;
+      return true;
+    },
+    refetchOnWindowFocus: false
   });
 };
 

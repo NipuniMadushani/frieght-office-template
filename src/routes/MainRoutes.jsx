@@ -22,6 +22,7 @@ const AppUserSocialProfile = Loadable(lazy(() => import('views/application/users
 const AppUserAccountProfile1 = Loadable(lazy(() => import('views/application/users/account-profile/Profile1')));
 const AppUserAccountProfile2 = Loadable(lazy(() => import('views/application/users/account-profile/Profile2')));
 const AppUserAccountProfile3 = Loadable(lazy(() => import('views/application/users/account-profile/Profile3')));
+const AppUserAllCustomers = Loadable(lazy(() => import('views/application/users/account-profile/AllCustomers')));
 
 // application - user cards & list variant routing
 const AppProfileCardStyle1 = Loadable(lazy(() => import('views/application/users/card/CardStyle1')));
@@ -218,6 +219,10 @@ const MainRoutes = {
     {
       path: '/apps/user/account-profile/profile3',
       element: <AppUserAccountProfile3 />
+    },
+    {
+      path: '/apps/user/account-profile/all-customers',
+      element: <AppUserAllCustomers />
     },
 
     {

@@ -74,6 +74,12 @@ const application = {
               title: 'profile 03',
               type: 'item',
               url: '/apps/user/account-profile/profile3'
+            },
+            {
+              id: 'all-customers',
+              title: 'all-customers',
+              type: 'item',
+              url: '/apps/user/account-profile/all-customers'
             }
           ]
         },
