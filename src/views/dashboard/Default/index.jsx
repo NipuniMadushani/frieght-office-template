@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react';
 
 // material-ui
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 // project imports
-import EarningCard from './EarningCard';
+import FeatureTileCard from 'ui-component/cards/FeatureTileCard';
 import { gridSpacing } from 'store/constant';
 
 // assets
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';
+import ViewQuiltOutlinedIcon from '@mui/icons-material/ViewQuiltOutlined';
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
@@ -27,77 +28,94 @@ export default function Dashboard() {
     setLoading(false);
   }, []);
 
-  const dashboardTiles = [
+  const featureTiles = [
     {
-      title: 'Total Customers',
-      value: '2,450',
-      icon: <PeopleAltOutlinedIcon />,
-      path: '/apps/user/account-profile/all-customers'
+      title: 'Gate Movement',
+      subTitle: 'Truck entering gate',
+      icon: <LocalShippingOutlinedIcon />,
+      path: '/apps/user/account-profile/all-customers',
+       color: 'primary'
     },
     {
-      title: 'Total Orders',
-      value: '1,203',
-      icon: <ShoppingCartOutlinedIcon />,
-      path: '/apps/customer/order-list'
+      title: 'Depot Operations',
+      subTitle: 'Container yard',
+      icon: <WarehouseOutlinedIcon />,
+      path: '/apps/customer/order-list',
+       color: 'primary'
     },
     {
-      title: 'Total Invoices',
-      value: '840',
-      icon: <ReceiptOutlinedIcon />,
-      path: '/apps/invoice/invoice-list'
+      title: 'CFS Operation',
+      subTitle: 'Container freight station',
+      icon: <ViewQuiltOutlinedIcon />,
+      path: '/apps/invoice/invoice-list',
+       color: 'primary'
     },
     {
-      title: 'Messages',
-      value: '14 New',
-      icon: <ChatOutlinedIcon />,
-      path: '/apps/chat'
+      title: 'Repair Operations',
+      subTitle: 'Container repair tools',
+      icon: <BuildOutlinedIcon />,
+      path: '/apps/chat',
+       color: 'primary'
     },
     {
-      title: 'Emails',
-      value: '5 Unread',
-      icon: <EmailOutlinedIcon />,
-      path: '/apps/mail'
-    },
-    {
-      title: 'Calendar',
-      value: '3 Events',
-      icon: <CalendarTodayOutlinedIcon />,
-      path: '/apps/calendar'
-    },
-    {
-      title: 'Form Reports',
-      value: '128 total',
+      title: 'Container Rental',
+      subTitle: 'Container rental agreement',
       icon: <DescriptionOutlinedIcon />,
-      path: '/forms/layouts/layouts'
+      path: '/apps/mail',
+       color: 'primary'
     },
     {
-      title: 'Analytics',
-      value: 'View Stats',
-      icon: <EqualizerOutlinedIcon />,
-      path: '/dashboard/analytics'
+      title: 'Finance',
+      subTitle: 'Financial chart or invoice',
+      icon: <AccountBalanceWalletOutlinedIcon />,
+      path: '/apps/calendar',
+       color: 'primary'
     },
     {
-      title: 'System Settings',
-      value: 'Active',
+      title: 'System Configuration',
+      subTitle: 'System settings and administration',
       icon: <SettingsOutlinedIcon />,
-      path: '/sample-page'
+      path: '/forms/layouts/layouts',
+       color: 'primary'
+    },
+    {
+      title: 'Organization Setup',
+      subTitle: 'Configure companies, segments, and locations',
+      icon: <BusinessOutlinedIcon />,
+      path: '/dashboard/analytics',
+       color: 'primary'
+    },
+    {
+      title: 'Reports and Analysis',
+      subTitle: 'Business intelligent reports',
+      icon: <AssessmentOutlinedIcon />,
+      path: '/sample-page',
+       color: 'primary'
     }
   ];
 
   return (
     <Grid container spacing={gridSpacing}>
-      {dashboardTiles.map((tile, index) => (
+      {/* <Grid size={12}>
+        <Typography variant="h3" sx={{ mb: 3 }}>
+          System Portal
+        </Typography>
+      </Grid> */}
+      {featureTiles.map((tile, index) => (
         <Grid size={{ lg: 4, md: 6, sm: 6, xs: 12 }} key={index}>
-          <EarningCard
+          <FeatureTileCard
             isLoading={isLoading}
             title={tile.title}
-            value={tile.value}
+            subTitle={tile.subTitle}
             icon={tile.icon}
             path={tile.path}
+            color={tile.color}
           />
         </Grid>
       ))}
     </Grid>
   );
 }
+
+
 
