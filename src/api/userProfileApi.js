@@ -75,6 +75,7 @@ export const useSaveProfileMutation = () => {
   return useMutation({
     mutationFn: async (userData) => {
       const response = await axiosServices.post(`${USER_SERVICE_URL}/api/v1/user/profile`, userData);
+      console.warn(response.data);
       return response.data;
     },
     meta: {

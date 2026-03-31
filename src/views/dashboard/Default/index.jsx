@@ -33,64 +33,65 @@ export default function Dashboard() {
       title: 'Gate Movement',
       subTitle: 'Truck entering gate',
       icon: <LocalShippingOutlinedIcon />,
-      path: '/apps/user/account-profile/all-customers',
-       color: 'primary'
+      path: '/apps/user/account-profile/profile2',
+
+      color: 'primary'
     },
     {
       title: 'Depot Operations',
       subTitle: 'Container yard',
       icon: <WarehouseOutlinedIcon />,
-      path: '/apps/customer/order-list',
-       color: 'primary'
+      path: '/apps/user/account-profile/all-customers',
+      color: 'primary'
     },
     {
       title: 'CFS Operation',
       subTitle: 'Container freight station',
       icon: <ViewQuiltOutlinedIcon />,
       path: '/apps/invoice/invoice-list',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'Repair Operations',
       subTitle: 'Container repair tools',
       icon: <BuildOutlinedIcon />,
       path: '/apps/chat',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'Container Rental',
       subTitle: 'Container rental agreement',
       icon: <DescriptionOutlinedIcon />,
       path: '/apps/mail',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'Finance',
       subTitle: 'Financial chart or invoice',
       icon: <AccountBalanceWalletOutlinedIcon />,
       path: '/apps/calendar',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'System Configuration',
       subTitle: 'System settings and administration',
       icon: <SettingsOutlinedIcon />,
       path: '/forms/layouts/layouts',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'Organization Setup',
       subTitle: 'Configure companies, segments, and locations',
       icon: <BusinessOutlinedIcon />,
       path: '/dashboard/analytics',
-       color: 'primary'
+      color: 'primary'
     },
     {
       title: 'Reports and Analysis',
       subTitle: 'Business intelligent reports',
       icon: <AssessmentOutlinedIcon />,
       path: '/sample-page',
-       color: 'primary'
+      color: 'primary'
     }
   ];
 
@@ -116,6 +117,3 @@ export default function Dashboard() {
     </Grid>
   );
 }
-
-
-
