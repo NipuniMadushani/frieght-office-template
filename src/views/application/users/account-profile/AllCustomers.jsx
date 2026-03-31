@@ -187,11 +187,6 @@ export default function AllCustomers() {
               <Edit fontSize="small" />
             </IconButton>
           </Tooltip>
-          <Tooltip title="View Profile">
-            <IconButton color="secondary" size="small" onClick={() => console.log('View:', params.row)}>
-              <Visibility fontSize="small" />
-            </IconButton>
-          </Tooltip>
         </Stack>
       )
     }
