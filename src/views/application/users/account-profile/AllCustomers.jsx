@@ -12,6 +12,7 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
+import Dialog from '@mui/material/Dialog';
 import AddIcon from '@mui/icons-material/Add';
 // MUI X Community (Using latest Grid Hooks to avoid deprecated components)
 import { DataGrid, GridToolbarContainer, GridToolbarQuickFilter, useGridApiContext } from '@mui/x-data-grid';
@@ -22,6 +23,7 @@ import { Edit, Visibility, Add, ViewColumn, FilterList, FileDownload } from '@mu
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import AnimateButton from 'ui-component/extended/AnimateButton';
+import Profile2 from './Profile2';
 
 // ==============================|| MODERN CUSTOM TOOLBAR (Non-Deprecated Hook-based) ||============================== //
 
@@ -99,6 +101,15 @@ function CustomToolbar() {
 export default function AllCustomers() {
   const theme = useTheme();
   const { data: profiles, isLoading, isError } = useGetAllProfilesQuery();
+
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   if (isLoading) {
     return (
@@ -194,14 +205,14 @@ export default function AllCustomers() {
   ];
 
   return (
-    <MainCard content={false} title="Customer Directory">
+    <>
+      <MainCard content={false} title="Customer Directory">
       <Box sx={{ p: 3, bgcolor: alpha(theme.palette.primary.main, 0.01) }}>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
           <AnimateButton type="slide">
-            {' '}
-            <Button variant="contained" startIcon={<AddIcon />}>
+            <Button variant="contained" startIcon={<AddIcon />} onClick={handleClickOpen}>
               Add New
-            </Button>{' '}
+            </Button>
           </AnimateButton>
         </Box>
         <Card
@@ -231,5 +242,9 @@ export default function AllCustomers() {
         </Card>
       </Box>
     </MainCard>
+      <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 3 } }}>
+        {open && <Profile2 />}
+      </Dialog>
+    </>
   );
 }
