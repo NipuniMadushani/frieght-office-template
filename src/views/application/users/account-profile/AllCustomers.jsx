@@ -12,7 +12,7 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
-
+import AddIcon from '@mui/icons-material/Add';
 // MUI X Community (Using latest Grid Hooks to avoid deprecated components)
 import { DataGrid, GridToolbarContainer, GridToolbarQuickFilter, useGridApiContext } from '@mui/x-data-grid';
 
@@ -21,6 +21,7 @@ import { Edit, Visibility, Add, ViewColumn, FilterList, FileDownload } from '@mu
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
+import AnimateButton from 'ui-component/extended/AnimateButton';
 
 // ==============================|| MODERN CUSTOM TOOLBAR (Non-Deprecated Hook-based) ||============================== //
 
@@ -195,6 +196,14 @@ export default function AllCustomers() {
   return (
     <MainCard content={false} title="Customer Directory">
       <Box sx={{ p: 3, bgcolor: alpha(theme.palette.primary.main, 0.01) }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <AnimateButton type="slide">
+            {' '}
+            <Button variant="contained" startIcon={<AddIcon />}>
+              Add New
+            </Button>{' '}
+          </AnimateButton>
+        </Box>
         <Card
           sx={{
             borderRadius: 3,
