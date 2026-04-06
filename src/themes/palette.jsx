@@ -103,8 +103,8 @@ export function buildPalette(presetColor) {
       default: colors.paper
     },
     formAction: {
-      cancelBg: colors.grey500,
-      cancelHover: colors.grey600,
+      cancelBg: '#CCCCCC',
+      cancelHover: colors.grey500,
       saveBg: colors.primaryMain,
       saveColor: '#ffffff',
       saveHover: colors.primaryDark

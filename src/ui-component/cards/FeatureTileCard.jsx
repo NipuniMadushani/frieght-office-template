@@ -85,7 +85,7 @@ const FeatureTileCard = ({ isLoading, title, subTitle, icon, path, color = 'prim
                       ease: 'easeInOut'
                     }}
                     variants={{
-                      hover: { rotate: 360 }
+                      // hover: { rotate: 360 }
                     }}
                     style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >

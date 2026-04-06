@@ -242,7 +242,24 @@ export default function AllCustomers() {
         </Card>
       </Box>
     </MainCard>
-      <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 3 } }}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="lg"
+        fullWidth
+        sx={{
+          '& .MuiDialog-paper': {
+            p: 0,
+            m: 0,
+            overflow: 'hidden',
+            borderRadius: 3,
+            '& .MuiCard-root': {
+              border: 'none',
+              borderRadius: 0
+            }
+          }
+        }}
+      >
         {open && <Profile2 />}
       </Dialog>
     </>
